@@ -1,0 +1,10 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "deps:patch": "lerna exec -- npx ncu --upgrade --timeout 180000 --target patch"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}

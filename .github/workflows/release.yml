@@ -1,0 +1,41 @@
+name: RELEASE
+
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+
+jobs:
+  test:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Bootstrap Packages
+        run: lerna bootstrap -- --production --no-optional
+
+      - name: Lint
+        run: lerna run lint
+
+      - name: Test
+        run: lerna run test
+
+      - name: Build
+        run: lerna run build
+
+      - name: Publishing to NPM
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: lerna publish
