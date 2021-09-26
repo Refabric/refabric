@@ -24,7 +24,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Bootstrap Packages
-        run: lerna bootstrap -- --production --no-optional
+        run: lerna bootstrap
 
       - name: Lint
         run: lerna run lint
