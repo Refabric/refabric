@@ -9,7 +9,8 @@
     "test:watch": "jest --watch --coverage=false",
     "lint": "eslint src",
     "format": "prettier src --write",
-    "fix": "npm run format && eslint src --fix"
+    "fix": "npm run format && eslint src --fix",
+    "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "",
