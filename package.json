@@ -2,7 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "deps:patch": "lerna exec -- npx ncu --upgrade --timeout 180000 --target patch"
+    "deps:patch": "lerna exec -- npx ncu --upgrade --timeout 180000 --target patch",
+    "test": "lerna run test",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
