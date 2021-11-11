@@ -70,14 +70,14 @@ export class TextGenerator {
     context: Record<string, unknown>,
   ): string {
     const options = str
-      .replace(/(^{)|(}$)/, '')
+      .replace(/(^{)|(}$)/g, '')
       .trim()
       .split(' or ')
       .map((item) => item.trim());
 
     for (const option of options) {
       if (/(^")|("$)/.test(option)) {
-        return option.replace(/(^{)|(}$)/, '').replace(/(^")|("$)/g, '');
+        return option.replace(/(^{)|(}$)/g, '').replace(/(^")|("$)/g, '');
       }
       const resolved = this._drillObject(option, context);
       if (resolved) {
