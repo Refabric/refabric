@@ -6,6 +6,7 @@ describe('Generator', () => {
       'Example\n\nHello  ->\n\nWorld\nPeople',
       'Color\n\nRed\nGreen\nBlue',
       'Favorite Color\n\nMy favorite color is {grammar:Color}',
+      'Name\n\nMy name is {name}',
     ]);
     for (let i = 0; i < 100; i++) {
       expect(generator.think('Example')).toMatch(/^Hello (World|People)$/);
@@ -18,5 +19,8 @@ describe('Generator', () => {
         /^My favorite color is (Red|Green|Blue)$/,
       );
     }
+    expect(generator.think('Name', { name: 'Tester' })).toMatch(
+      /^My name is Tester$/,
+    );
   });
 });
