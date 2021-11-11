@@ -39,5 +39,8 @@
   "dependencies": {
     "@types/async": "^3.2.8",
     "async": "^3.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
